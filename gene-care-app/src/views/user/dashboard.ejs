@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <%= user.username %>!</h1>
+
+        <!-- Tombol Logout -->
+        <a href="/auth/logout" class="btn btn-danger mb-3">Logout</a>
+
+        <!-- Tombol Navigasi ke Halaman Input DNA -->
+        <a href="/user/dna" class="btn btn-primary mb-3">Go to DNA Input</a>
+
+        <!-- DNA Data Card -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>Your DNA Data</h5>
+            </div>
+            <div class="card-body">
+                <% if (dnaData.length > 0) { %>
+                    <% dnaData.forEach(dna => { %>
+                        <p class="card-text"><strong>DNA:</strong> <%= dna.dna_string %></p>
+                    <% }) %>
+                <% } else { %>
+                    <p class="card-text text-muted">No DNA data available. Please <a href="/user/dna">add your DNA data</a>.</p>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Medical Records Card -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Your Medical Record</h5>
+            </div>
+            <div class="card-body">
+                <% if (medicalRecords.length > 0) { %>
+                    <% medicalRecords.forEach(record => { %>
+                        <p class="card-text"><strong>Record:</strong> <%= record.record %></p>
+                    <% }) %>
+                <% } else { %>
+                    <p class="card-text text-muted">No medical records available.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

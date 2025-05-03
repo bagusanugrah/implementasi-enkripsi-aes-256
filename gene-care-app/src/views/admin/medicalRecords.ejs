@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <title>Medical Records</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Records</h1>
+
+        <form action="/admin/medical-records" method="POST">
+            <div class="mb-3">
+                <label for="user_id" class="form-label">User ID</label>
+                <input type="number" class="form-control" id="user_id" name="user_id" required>
+            </div>
+            <div class="mb-3">
+                <label for="record" class="form-label">New Record</label>
+                <textarea class="form-control" id="record" name="record" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Record</button>
+        </form>
+
+        <h2>Existing Records</h2>
+        <ul>
+            <% medicalRecords.forEach(record => { %>
+                <li>
+                    <strong><%= record.username %>:</strong>
+                    <form action="/admin/medical-records/<%= record.id %>/update" method="POST" style="display: inline;">
+                        <textarea name="record" required><%= record.record %></textarea>
+                        <button type="submit" class="btn btn-warning btn-sm">Update</button>
+                    </form>
+                    <form action="/admin/medical-records/<%= record.id %>/delete" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>

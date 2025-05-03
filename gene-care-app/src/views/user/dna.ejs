@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <title>Your DNA Data</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Your DNA Data</h1>
+
+        <!-- Tombol Back to Dashboard -->
+        <a href="/user/dashboard" class="btn btn-secondary mb-3">Back to Dashboard</a>
+
+        <% if (!dna) { %>
+            <!-- Form untuk menambahkan data DNA -->
+            <form action="/user/dna" method="POST">
+                <div class="mb-3">
+                    <label for="dna_string" class="form-label">DNA Data</label>
+                    <input type="text" class="form-control" id="dna_string" name="dna_string" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add DNA</button>
+            </form>
+        <% } else { %>
+            <!-- Menampilkan data DNA -->
+            <p><strong>Your DNA:</strong> <%= dna.dna_string %></p>
+
+            <!-- Form untuk memperbarui data DNA -->
+            <form action="/user/dna/update" method="POST">
+                <div class="mb-3">
+                    <label for="dna_string" class="form-label">Update DNA</label>
+                    <input type="text" class="form-control" id="dna_string" name="dna_string" value="<%= dna.dna_string %>" required>
+                </div>
+                <button type="submit" class="btn btn-warning">Update DNA</button>
+            </form>
+
+            <!-- Form untuk menghapus data DNA -->
+            <form action="/user/dna/delete" method="POST">
+                <button type="submit" class="btn btn-danger mt-3">Delete DNA</button>
+            </form>
+        <% } %>
+    </div>
+</body>
+</html>
