@@ -45,13 +45,6 @@ CREATE TABLE `dna_data` (
   `dna_string` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `dna_data`
---
-
-INSERT INTO `dna_data` (`id`, `user_id`, `dna_string`) VALUES
-(3, 2, 'a0bf366e89ecb72b53749358bce31f3c:43417cf60d9d0bff99d3330fa96671a53339c6b8689c3259e44932447f021454');
-
 -- --------------------------------------------------------
 
 --
@@ -63,13 +56,6 @@ CREATE TABLE `medical_records` (
   `user_id` int NOT NULL,
   `record` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `medical_records`
---
-
-INSERT INTO `medical_records` (`id`, `user_id`, `record`) VALUES
-(8, 2, '1b8caa60c2fa1b78d5e11b53ef11d029:769463df14969a20fe68643de035d483');
 
 -- --------------------------------------------------------
 
